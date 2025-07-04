@@ -29,7 +29,6 @@ class TestUser:
                     """ named her the seventh-greatest female screen legend """ + \
                     """of Classic Hollywood cinema."""
             )
-
             user.password_hash = "whosafraidofvirginiawoolf"
             
             db.session.add(user)
@@ -88,9 +87,11 @@ class TestUser:
         with app.app_context():
 
             User.query.delete()
+            Recipe.query.delete()
             db.session.commit()
 
             user = User(username="Prabhdip")
+            user.password_hash = "testpassword"
 
             recipe_1 = Recipe(
                 title="Delicious Shed Ham",
